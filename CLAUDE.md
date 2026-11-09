@@ -72,7 +72,17 @@ management.
 - Relative imports carry `.js`.
 - Handler error messages and status codes are part of two products' public APIs.
 
-## Tests
+## Commands
 
-    bun run test      # unit, no DB
+Bun is the runner; there is no `test` script (use `test:unit`). Vitest runs the
+suites (not `bun test`). Published to GitHub Packages, not npm.
+
+    bun run test:unit   # unit, no DB
+    bun run verify      # typecheck + lint + test:unit + build (pre-publish gate)
+    bun run build       # tsc -p tsconfig.esm.json -> dist/
+    bun run lint        # eslint src/
     TEST_DATABASE_URL=postgresql://localhost:5432/shapeshyft_test bun run test:db
+
+The DB suite refuses non-localhost URLs (`@sudobility/test-db-guard`) and uses a
+separate config (`vitest.db.config.ts`, no file parallelism — one shared DB);
+`vitest.config.ts` excludes `*.db.test.ts`.
