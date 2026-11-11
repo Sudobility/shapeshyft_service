@@ -6,7 +6,7 @@
       "name": "@sudobility/shapeshyft_service",
       "dependencies": {
         "@hono/zod-validator": "~0.7.6",
-        "@sudobility/shapeshyft_engine": "^1.0.15",
+        "@sudobility/shapeshyft_engine": "^1.0.16",
         "resend": "~6.28.0",
         "zod": "~3.25.76",
       },
@@ -249,7 +249,7 @@
 
     "@sudobility/ratelimit_service": ["@sudobility/ratelimit_service@1.0.51", "https://npm.pkg.github.com/download/@sudobility/ratelimit_service/1.0.51/d0ea38152f9c9db36fe7430f0289850ecfaaf4d0", { "peerDependencies": { "@sudobility/types": "^1.10.1", "drizzle-orm": "^0.45.0", "hono": "^4.0.0", "postgres": "^3.4.0" } }, "sha512-Rr7Jb0FXkgOu34Mc4bb6a2wcQvDUH8Jbqe9hFiT7D3ViJT2p6YnL3N+ZDr81O2fxE6n7qONZWIhJBNHlpRoYfA=="],
 
-    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.15", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.15/c8136380003705267e6034a22fc07fd27117ca05", { "dependencies": { "@sudobility/types": "^1.9.79" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-z5NjfOJEbW/euTr4/sdxmJM2Fxq4GQ3Xi+TUJ/0EFkbuQP3MRa/xqj8e/5Zdybqa3iKUJxG4iJnZg27ggQ0iAw=="],
+    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.16", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.16/0459deb009ccffeb4907be8534b5899c7323d746", { "dependencies": { "@sudobility/types": "^1.10.1" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-Vdp9G0DVzeL0YMpE3nHTq3frQraZHGVMYAmfrLcE5XGTDhaA/BISpGXpZBP6WyJ3N9VpuOhTDtBheR5dUtwMxA=="],
 
     "@sudobility/subscription_service": ["@sudobility/subscription_service@1.0.35", "https://npm.pkg.github.com/download/@sudobility/subscription_service/1.0.35/e33e00b30c0f648ec3c56fb96062ea56b32289a5", {}, "sha512-WO19m2o+wp1ti/tglM1sgW01VYhz93zvQX7rRaBhzSaKim6vpsYoR8X5kInTg2nKequMpe0UxAga2NXMM6SBEA=="],
 
