@@ -6,7 +6,7 @@
       "name": "@sudobility/shapeshyft_service",
       "dependencies": {
         "@hono/zod-validator": "~0.7.6",
-        "@sudobility/shapeshyft_engine": "^1.0.17",
+        "@sudobility/shapeshyft_engine": "^1.0.18",
         "resend": "~6.28.0",
         "zod": "~3.25.76",
       },
@@ -249,7 +249,7 @@
 
     "@sudobility/ratelimit_service": ["@sudobility/ratelimit_service@1.0.53", "https://npm.pkg.github.com/download/@sudobility/ratelimit_service/1.0.53/55624157d8f8f7046ee15a9e3095d9ab05fe8abd", { "peerDependencies": { "@sudobility/types": "^1.11.1", "drizzle-orm": "^0.45.0", "hono": "^4.0.0", "postgres": "^3.4.0" } }, "sha512-X+Rg3RxQpEPBglFOBZOEUvRO49DUgeU1w5OXExws0OuvUwXYA5qSkC2oyEkv111ZQ5Nx4ti2s+qmkEZmAIXxZQ=="],
 
-    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.17", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.17/6fde69b8d17c7269902ee30e06ed724d183759f4", { "dependencies": { "@sudobility/types": "^1.10.2" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-urauN9GoI9hBbgisF2zd63Ih6Gs26IwoyCKTDLEn/gzV+Y8lnC58HxQJSPBjNht8Vwe/pcqIvgO4J5n4LqNm8A=="],
+    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.18", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.18/1943ff4f78b0dd81659860dc93329479c87b8a03", { "dependencies": { "@sudobility/types": "^1.11.1" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-mXv0kfZugVPH56g8i3f97DYzBXocXrCK23zTMjdaarTvfFsyR7yqGwLc8AmQ5WDsWMEGy/L0KPDsTfjKOeEHNg=="],
 
     "@sudobility/subscription_service": ["@sudobility/subscription_service@1.0.37", "https://npm.pkg.github.com/download/@sudobility/subscription_service/1.0.37/eee29aa3c45411aacdeb1b81f91e0a41c74107e9", {}, "sha512-7Z6vzqHldyMWjOufOvipJBMR28IohYPCFCF1ZdPB1DdhFuS+G9TXE8EvNTfB9G00QEUQ2QYEfKmFv7UqHKmt3A=="],
 
