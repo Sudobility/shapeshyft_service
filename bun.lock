@@ -6,7 +6,7 @@
       "name": "@sudobility/shapeshyft_service",
       "dependencies": {
         "@hono/zod-validator": "~0.7.6",
-        "@sudobility/shapeshyft_engine": "^1.0.16",
+        "@sudobility/shapeshyft_engine": "^1.0.17",
         "resend": "~6.28.0",
         "zod": "~3.25.76",
       },
@@ -249,7 +249,7 @@
 
     "@sudobility/ratelimit_service": ["@sudobility/ratelimit_service@1.0.52", "https://npm.pkg.github.com/download/@sudobility/ratelimit_service/1.0.52/7ea4a366c9e6add26b47a299c4f33b8893189ac8", { "peerDependencies": { "@sudobility/types": "^1.10.2", "drizzle-orm": "^0.45.0", "hono": "^4.0.0", "postgres": "^3.4.0" } }, "sha512-Mvgs+vHWEgTQy8SOscIWpD2osruA7OeDu9Pt+PDRjQn0+wObDcWR8GPnw8fi5xR35vsVB0FhWsbeqQN0k9207w=="],
 
-    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.16", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.16/0459deb009ccffeb4907be8534b5899c7323d746", { "dependencies": { "@sudobility/types": "^1.10.1" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-Vdp9G0DVzeL0YMpE3nHTq3frQraZHGVMYAmfrLcE5XGTDhaA/BISpGXpZBP6WyJ3N9VpuOhTDtBheR5dUtwMxA=="],
+    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.17", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.17/6fde69b8d17c7269902ee30e06ed724d183759f4", { "dependencies": { "@sudobility/types": "^1.10.2" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-urauN9GoI9hBbgisF2zd63Ih6Gs26IwoyCKTDLEn/gzV+Y8lnC58HxQJSPBjNht8Vwe/pcqIvgO4J5n4LqNm8A=="],
 
     "@sudobility/subscription_service": ["@sudobility/subscription_service@1.0.36", "https://npm.pkg.github.com/download/@sudobility/subscription_service/1.0.36/c50714d2d7830e819971b49b20df455ece472160", {}, "sha512-0ouBXQSURE6taDiFhastNqRmVh9zZC8ZLjZH6dGrBGidlzWN32QLGYoIO2xThCyq7qPRqX6bZ60N/4lFWHMTcw=="],
 
