@@ -1,8 +1,8 @@
 /**
  * @fileoverview The API process: Hono app, health checks, and Bun server options
  * @description What every shell's `index.ts` used to build by hand: logging,
- * CORS, a body limit sized for base64 media, liveness and readiness routes,
- * the `/api/v1` mount, database initialization on boot, and a Bun `fetch`
+ * CORS, a body limit sized for base64 media, a single `/health` route (DB-backed,
+ * 503 when the database is down), the `/api/v1` mount, database initialization on boot, and a Bun `fetch`
  * that lets a long provider call outlive the server's idle timer.
  */
 
@@ -15,6 +15,7 @@ import {
   errorResponse,
   successResponse,
 } from "@sudobility/shapeshyft_engine/types";
+import type { HealthResponse } from "@sudobility/types";
 import type { Logger } from "../contracts.js";
 
 /** 50 MB: base64-encoded media inflates payloads by a third. */
@@ -26,7 +27,7 @@ export interface ApiServerConfig {
   version?: string;
   /** Everything served under `/api/v1`. */
   routes: Hono;
-  /** Used by `/health/ready`; anything with drizzle's `execute`. */
+  /** Used by `/health` for the DB readiness check; anything with drizzle's `execute`. */
   db: { execute(query: ReturnType<typeof sql>): Promise<ArrayLike<unknown>> };
   /** Creates and migrates the schema. Run on `start()`; a failure exits. */
   initDatabase(): Promise<void>;
@@ -81,23 +82,34 @@ export function createApiServer(config: ApiServerConfig): ApiServer {
     )
   );
 
-  // Liveness: the process answers. Public, no database.
-  app.get("/health", c => c.json(successResponse({ status: "healthy" })));
-
-  // Readiness: the database answers. Public; 503 until it does.
-  app.get("/health/ready", async c => {
+  // Single health endpoint: liveness + readiness in one, returning the standard
+  // `HealthResponse` envelope with database state in `detail`. Because readiness
+  // used to be a separate 503-until-ready probe, this endpoint still answers
+  // HTTP 503 (with the same shape) when the database is unreachable, so the
+  // readiness signal is preserved — a liveness probe on `/health` will therefore
+  // fail while the database is down.
+  app.get("/health", async c => {
+    const version = config.version ?? "1.0.0";
     try {
       const result = await config.db.execute(sql`SELECT 1 as ok`);
-      if (result.length > 0) {
-        return c.json(
-          successResponse({ status: "ready", database: "connected" })
-        );
-      }
-      return c.json(errorResponse("Database check returned no rows"), 503);
+      const ok = result.length > 0;
+      const data: HealthResponse = {
+        status: ok ? "healthy" : "unhealthy",
+        version,
+        detail: { database: ok ? "connected" : "disconnected" },
+      };
+      return ok
+        ? c.json(successResponse(data))
+        : c.json(successResponse(data), 503);
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Unknown error";
       log.error("Health check failed:", message);
-      return c.json(errorResponse(`Database not ready: ${message}`), 503);
+      const data: HealthResponse = {
+        status: "unhealthy",
+        version,
+        detail: { database: "disconnected", error: message },
+      };
+      return c.json(successResponse(data), 503);
     }
   });
 

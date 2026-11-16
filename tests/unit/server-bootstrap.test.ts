@@ -66,24 +66,30 @@ describe("createApiServer", () => {
     });
   };
 
-  it("serves liveness, readiness and the API mount", async () => {
+  it("serves health and the API mount", async () => {
     const { app } = server(async () => [{ ok: 1 }]);
     expect(await (await app.request("/")).json()).toMatchObject({
       data: { name: "Test API", status: "healthy" },
     });
-    expect((await app.request("/health")).status).toBe(200);
-    expect((await app.request("/health/ready")).status).toBe(200);
+    const health = await app.request("/health");
+    expect(health.status).toBe(200);
+    expect(await health.json()).toMatchObject({
+      data: { status: "healthy", detail: { database: "connected" } },
+    });
     expect(await (await app.request("/api/v1/ping")).text()).toBe("pong");
   });
 
-  it("reports not ready with 503 when the database does not answer", async () => {
+  it("reports unhealthy with 503 when the database does not answer", async () => {
     const { app } = server(async () => {
       throw new Error("connection refused");
     });
-    const res = await app.request("/health/ready");
+    const res = await app.request("/health");
     expect(res.status).toBe(503);
     expect(await res.json()).toMatchObject({
-      error: "Database not ready: connection refused",
+      data: {
+        status: "unhealthy",
+        detail: { database: "disconnected", error: "connection refused" },
+      },
     });
   });
 
