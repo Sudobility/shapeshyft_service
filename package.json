@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/shapeshyft_service",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "Shared tables, routes and middleware for ShapeShyft-style structured-output APIs",
   "type": "module",
   "main": "./dist/index.js",

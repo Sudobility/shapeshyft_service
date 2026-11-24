@@ -97,6 +97,17 @@ export const llmProviderSchema = z.enum([
   "ideogram",
   "recraft",
   "stability",
+  "fal",
+  "leonardo",
+  "luma",
+  "alibaba",
+  "runway",
+  // Video-generation providers
+  "kling",
+  "minimax",
+  "pika",
+  // Audio-generation provider
+  "elevenlabs",
 ]);
 
 export const httpMethodSchema = z.enum(["GET", "POST"]);

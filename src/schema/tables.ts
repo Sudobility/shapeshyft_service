@@ -47,6 +47,17 @@ export const LLM_PROVIDER_VALUES = [
   "ideogram",
   "recraft",
   "stability",
+  "fal",
+  "leonardo",
+  "luma",
+  "alibaba",
+  "runway",
+  // Video-generation providers
+  "kling",
+  "minimax",
+  "pika",
+  // Audio-generation provider
+  "elevenlabs",
 ] as const;
 
 export function createServiceTables(

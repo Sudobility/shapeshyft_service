@@ -31,7 +31,7 @@ export async function initServiceTables(
   // Create enums (if they don't exist)
   await client.unsafe(`
     DO $$ BEGIN
-      CREATE TYPE ${s}.llm_provider AS ENUM ('openai', 'anthropic', 'gemini', 'mistral', 'cohere', 'groq', 'xai', 'deepseek', 'perplexity', 'lm_studio', 'jev', 'openrouter', 'bytedance', 'bfl', 'ideogram', 'recraft', 'stability');
+      CREATE TYPE ${s}.llm_provider AS ENUM ('openai', 'anthropic', 'gemini', 'mistral', 'cohere', 'groq', 'xai', 'deepseek', 'perplexity', 'lm_studio', 'jev', 'openrouter', 'bytedance', 'bfl', 'ideogram', 'recraft', 'stability', 'fal', 'leonardo', 'luma', 'alibaba', 'runway', 'kling', 'minimax', 'pika', 'elevenlabs');
     EXCEPTION
       WHEN duplicate_object THEN null;
     END $$;
@@ -96,6 +96,42 @@ export async function initServiceTables(
       -- Add stability if not exists (image generation: Stable Diffusion)
       IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'stability' AND enumtypid = '${s}.llm_provider'::regtype) THEN
         ALTER TYPE ${s}.llm_provider ADD VALUE 'stability';
+      END IF;
+      -- Add fal if not exists (image aggregator)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'fal' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'fal';
+      END IF;
+      -- Add leonardo if not exists (image generation)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'leonardo' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'leonardo';
+      END IF;
+      -- Add luma if not exists (image generation: Photon)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'luma' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'luma';
+      END IF;
+      -- Add alibaba if not exists (image generation: Qwen-Image)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'alibaba' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'alibaba';
+      END IF;
+      -- Add runway if not exists (image generation: Gen-4)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'runway' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'runway';
+      END IF;
+      -- Add kling if not exists (video generation)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'kling' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'kling';
+      END IF;
+      -- Add minimax if not exists (video generation: Hailuo)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'minimax' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'minimax';
+      END IF;
+      -- Add pika if not exists (video gateway)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'pika' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'pika';
+      END IF;
+      -- Add elevenlabs if not exists (audio generation: TTS)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'elevenlabs' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'elevenlabs';
       END IF;
     END $$;
   `);
