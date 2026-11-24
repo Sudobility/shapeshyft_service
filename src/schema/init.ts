@@ -31,7 +31,7 @@ export async function initServiceTables(
   // Create enums (if they don't exist)
   await client.unsafe(`
     DO $$ BEGIN
-      CREATE TYPE ${s}.llm_provider AS ENUM ('openai', 'anthropic', 'gemini', 'mistral', 'cohere', 'groq', 'xai', 'deepseek', 'perplexity', 'lm_studio', 'jev', 'openrouter');
+      CREATE TYPE ${s}.llm_provider AS ENUM ('openai', 'anthropic', 'gemini', 'mistral', 'cohere', 'groq', 'xai', 'deepseek', 'perplexity', 'lm_studio', 'jev', 'openrouter', 'bytedance', 'bfl', 'ideogram', 'recraft', 'stability');
     EXCEPTION
       WHEN duplicate_object THEN null;
     END $$;
@@ -76,6 +76,26 @@ export async function initServiceTables(
       -- Add openrouter if not exists
       IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'openrouter' AND enumtypid = '${s}.llm_provider'::regtype) THEN
         ALTER TYPE ${s}.llm_provider ADD VALUE 'openrouter';
+      END IF;
+      -- Add bytedance if not exists (image generation: Seedream)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'bytedance' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'bytedance';
+      END IF;
+      -- Add bfl if not exists (image generation: Black Forest Labs FLUX)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'bfl' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'bfl';
+      END IF;
+      -- Add ideogram if not exists (image generation)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'ideogram' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'ideogram';
+      END IF;
+      -- Add recraft if not exists (image generation)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'recraft' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'recraft';
+      END IF;
+      -- Add stability if not exists (image generation: Stable Diffusion)
+      IF NOT EXISTS (SELECT 1 FROM pg_enum WHERE enumlabel = 'stability' AND enumtypid = '${s}.llm_provider'::regtype) THEN
+        ALTER TYPE ${s}.llm_provider ADD VALUE 'stability';
       END IF;
     END $$;
   `);

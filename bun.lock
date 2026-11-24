@@ -6,7 +6,7 @@
       "name": "@sudobility/shapeshyft_service",
       "dependencies": {
         "@hono/zod-validator": "~0.7.6",
-        "@sudobility/shapeshyft_engine": "^1.0.19",
+        "@sudobility/shapeshyft_engine": "^1.0.20",
         "resend": "~6.28.0",
         "zod": "~3.25.76",
       },
@@ -249,7 +249,7 @@
 
     "@sudobility/ratelimit_service": ["@sudobility/ratelimit_service@1.0.54", "https://npm.pkg.github.com/download/@sudobility/ratelimit_service/1.0.54/35d17a3e5050a630ac896fe0979c273ab36bf276", { "peerDependencies": { "@sudobility/types": "^1.11.2", "drizzle-orm": "^0.45.0", "hono": "^4.0.0", "postgres": "^3.4.0" } }, "sha512-gujOGBgiyz6shtoj8XOfbaIabqvTNBMlU+5mvqU1qa9AS1QKLAzNmTgL6xTOytN6Ep0fwn7U1SYLUi/eO26Naw=="],
 
-    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.19", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.19/07f49f6461ae8eb84294e71fa9640c5727424fe4", { "dependencies": { "@sudobility/types": "^1.11.2" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-lnrfgwtJIInXNn1IZ4NJdmpWfOv+ABvzBMVq/5TanXDsnybQordncufR9h61SLF6TYw7J4bxdyaqCD3kod9oLQ=="],
+    "@sudobility/shapeshyft_engine": ["@sudobility/shapeshyft_engine@1.0.20", "https://npm.pkg.github.com/download/@sudobility/shapeshyft_engine/1.0.20/a03dae8d2297b5cd222f07eb960163ef618fc9de", { "dependencies": { "@sudobility/types": "^1.11.2" }, "peerDependencies": { "@anthropic-ai/sdk": "^0.39.0", "@google/generative-ai": "^0.21.0", "groq-sdk": "^0.37.0", "openai": "^4.77.0", "sharp": "^0.35.4" } }, "sha512-KitUdA40zenc/CqvqaXLJZDKIZDOqw2bQ8fxYkPlg1F+SD+8s3T2HEhzknacm+jAmyFjzpB+7FywMIl52G37uA=="],
 
     "@sudobility/subscription_service": ["@sudobility/subscription_service@1.0.38", "https://npm.pkg.github.com/download/@sudobility/subscription_service/1.0.38/ce2b9b1f0d79d658cc2f748c51777e5f62d400cc", {}, "sha512-/+H2flK3hGG2ZDKw2niO7maVmTJqieMul66mgRaBi3N7JFl0Glr4ncgrEDIGLyTHex8DEFF//Y6ZTHIPzntgrQ=="],
 

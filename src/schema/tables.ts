@@ -41,6 +41,12 @@ export const LLM_PROVIDER_VALUES = [
   "lm_studio",
   "jev",
   "openrouter",
+  // Image-generation providers
+  "bytedance",
+  "bfl",
+  "ideogram",
+  "recraft",
+  "stability",
 ] as const;
 
 export function createServiceTables(

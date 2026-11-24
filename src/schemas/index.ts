@@ -91,6 +91,12 @@ export const llmProviderSchema = z.enum([
   "lm_studio",
   "jev",
   "openrouter",
+  // Image-generation providers
+  "bytedance",
+  "bfl",
+  "ideogram",
+  "recraft",
+  "stability",
 ]);
 
 export const httpMethodSchema = z.enum(["GET", "POST"]);
